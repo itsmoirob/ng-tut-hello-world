@@ -4,31 +4,22 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'courses',
-  template: `
-<h2>Courses</h2>
-<img src="{{sanitizeImg()}}">
-<img [src]="sanitizeImg()">
-<h3>{{getTitle()}}</h3>
-<ul>
-  <li *ngFor="let course of courses">{{course}}</li>
-</ul>
-<button class="btn btn-primary" [class.btn-success]="isActive">Save</button>
-<button class="btn btn-primary" [style.backgroundColor] = "isActive ? 'green' : 'tomato'">Save</button>
-<div (click)="onDiv()">
-  <button class="btn btn-primary" (click)="onSave($event)" >Save</button>
-</div>
-<input  (keyup.enter)="onKeyUp()">
-`
+  templateUrl: './courses.component.html'
+
 })
 
 export class CoursesComponent {
   title = 'List of courses';
   imageUrl = ' https://lorempixel.com/400/200';
   courses: string[];
-  isActive: boolean = false;
+  isActive: boolean = true;
 
   constructor(private service: CoursesService, private sanitizer: DomSanitizer) {
     this.courses = service.getCourses();
+  }
+
+  changeIsActive(): void {
+    this.isActive = !this.isActive;
   }
 
   getTitle() {
@@ -51,5 +42,26 @@ export class CoursesComponent {
 
   onKeyUp() {
     console.log('Enter key was pressed');
+  }
+
+  onKeyUp1($event) {
+    console.log($event.target.value);
+
+  }
+  onKeyUp2(varName) {
+    console.log(varName);
+  }
+
+  myOtherVar: string = 'My other var';
+  myOtherVar1: string = 'My other var 1';
+  myOtherVar2: string = 'My other var 2';
+  onKeyUp3() {
+    console.log(this.myOtherVar);
+  }
+  onKeyUp4() {
+    console.log(this.myOtherVar1);
+  }
+  onKeyUp5() {
+    console.log(this.myOtherVar2);
   }
 }

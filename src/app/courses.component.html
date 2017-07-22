@@ -1,0 +1,63 @@
+<h2>Courses</h2>
+<div>
+  <p>Bound src to img tag</p>
+  <img [src]="sanitizeImg()">
+</div>
+<div>
+  <p>Get the titel using a function</p>
+  <h3>{{getTitle()}}</h3>
+</div>
+<div>
+  <p>A *ngFor loop</p>
+  <ul>
+    <li *ngFor="let course of courses">{{course}}</li>
+  </ul>
+</div>
+<div>
+  <p>Dynamically bound a class to a button</p>
+  <button (click)="changeIsActive()" class="btn btn-primary" [class.btn-success]="isActive">Change</button>
+</div>
+<div>
+  <p>Dynamically bound a style to a button</p>
+  <button (click)="changeIsActive()" class="btn btn-primary" [style.backgroundColor]="isActive ? 'tomato' : 'goldenrod'">Change</button>
+</div>
+<div (click)="onDiv()">
+  <p>Attach a function to (click)</p>
+  <button class="btn btn-primary" (click)="onSave($event)">Save</button>
+</div>
+<div>
+  <p>Get some info out of an input box</p>
+  <input (keyup)="onKeyUp()">
+</div>
+<div>
+  <p>Get some info out of an input box 0 only when "enter" is pressed</p>
+  <input (keyup.enter)="onKeyUp()">
+</div>
+<div>
+  <p>Get some info out of an input box 1 only when "enter" is pressed</p>
+  <input (keyup.enter)="onKeyUp1($event)">
+</div>
+<div>
+  <p>Get some info out of an input box 2 only when "enter" is pressed using variable name. The #myVarName is a template variable</p>
+  <input #myVarName (keyup.enter)="onKeyUp2(myVarName.value)">
+</div>
+<div>
+  <p>Get some info out of an input box 2 only using Procedural programming.</p>
+  <p>Using [value] this is only one way binding. From the js to the view.</p>
+  <input [value]="myOtherVar" (keyup.enter)="onKeyUp3()">
+</div>
+<div>
+  <p>Get some info out of an input box 2 only using Procedural programming.</p>
+  <p>Using [value] this is only one way binding. From the js to the view.</p>
+  <p>To get the input value to go two way we can use this method </p>
+  <pre>
+  (keyup.enter)="myOtherVar1 = $event.target.value; onKeyUp4()"
+  </pre>
+  <input [value]="myOtherVar1" (keyup.enter)="myOtherVar1 = $event.target.value; onKeyUp4()">
+</div>
+<div>
+  <p>Get some info out of an input box 2 only using Procedural programming.</p>
+  <p>Using [(ngModel)] this is only one way binding. From the js to the view.</p>
+  <p>You will need to import FormsModule in top the app.module to make this work.</p>
+  <input [(ngModel)]="myOtherVar2" (keyup.enter)="onKeyUp5()">
+</div>
