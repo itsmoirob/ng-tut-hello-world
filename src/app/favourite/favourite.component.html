@@ -1,0 +1,13 @@
+<div>
+  <h3>Favourite exam</h3>
+  <span class="glyphicon" 
+  [class.glyphicon-star]="isFavourite"
+  [class.glyphicon-star-empty]="!isFavourite"
+  (click)="onClick()"
+  ></span>
+</div>
+<div>
+  <h3>Capitlize some text</h3>
+  <input [(ngModel)]="titleText">
+  <p>{{ titleText | titleCase}}</p>
+</div>

@@ -1,10 +1,17 @@
 <div>
   <h3>Pipes</h3>
   <ul>
-    <li>{{course.title}}</li>
-    <li>{{course.students}}</li>
-    <li>{{course.rating | number }}</li>
-    <li>{{course.price}}</li>
-    <li>{{course.releaseDate}}</li>
+    <li>{{ course.title | uppercase }} //piped to uppercase</li>
+    <li>{{ course.students | number}} //piped to number to give ","</li>
+    <li>{{ course.rating | number:"3.2-2"  }} //pipe to number, set to 2 d.ps and 3 intergers</li>
+    <li>{{ course.price | currency:"GBP":true:"3.2-2" }} //piped to currency to set that, :true sets symbol</li>
+    <li>{{ course.releaseDate | date: "shortDate" }}</li>
   </ul>
+</div>
+<div>
+  <h3>Custom Pipe</h3>
+  <p>Using a summary pipe to truncate long text</p>
+  <p>{{ text }}</p>
+  <p>{{ text | summary }}</p>
+  <p>{{ text | summary:10 }}</p>
 </div>

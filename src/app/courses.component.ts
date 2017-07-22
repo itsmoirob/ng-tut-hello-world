@@ -3,7 +3,7 @@ import { CoursesService } from './courses.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'courses',
+  selector: 'app-courses',
   templateUrl: './courses.component.html'
 
 })
